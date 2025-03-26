@@ -8,5 +8,12 @@
   </head>
   <body>
     <h1>Messages</h1>
+    <% if (locals.user) {%>
+    <h1>Welcome, <%= user.name + " " + user.surname %></h1>
+    <a href="/signout">Sign Out</a>
+    <% } else { %>
+      <a href="/signup">Sign Up</a>
+      <a href="/signin">Sign In</a>
+    <% } %>
   </body>
 </html>

@@ -10,5 +10,18 @@
   </head>
   <body>
     <h1>Sign Up</h1>
+    <form action="/signup" method="POST">
+        <label for="name">Name:</label>
+        <input id="name" name="name" placeholder="name" type="text" />
+        <label for="surname">Surname:</label>
+        <input id="surname" name="surname" placeholder="surname" type="text" />
+        <label for="username">Username:</label>
+        <input id="username" name="username" placeholder="username" type="text" />
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password" />
+        <label for="confirm-password">Confirm Password:</label>
+        <input id="confirm-password" name="confirm-password" type="password" />
+        <button type="submit">Sign Up</button>
+    </form>
   </body>
 </html>

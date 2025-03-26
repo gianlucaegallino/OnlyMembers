@@ -4,4 +4,6 @@ const signInRouter = Router();
 
 signInRouter.get("/", signInController.getForm);
 
+signInRouter.post("/", signInController.postForm);
+
 module.exports = signInRouter;
