@@ -7,7 +7,7 @@ async function getForm(req, res) {
 }
 
 async function postForm(req,res){
-  passport.authenticate("local", {
+  return passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/",
   })

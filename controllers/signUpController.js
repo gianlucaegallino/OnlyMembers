@@ -15,10 +15,11 @@ async function postForm(req, res) {
     res.redirect("/");
   } catch (error) {
     console.error(error);
-    next(error);
+    res.redirect("/");
    }
 }
 
 module.exports = {
   getForm,
+  postForm
 };
