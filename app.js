@@ -20,6 +20,12 @@ const LocalStrategy = require("passport-local").Strategy;
 // Bcrypt
 const bcrypt = require("bcryptjs");
 
+//----------------Routers-------------------
+
+const indexRouter = require("./routes/indexRouter");
+const signInRouter = require("./routes/signInRouter");
+const signUpRouter = require("./routes/signUpRouter");
+
 //-------------Constants & Middleware-------------
 
 const PORT = process.env.PORT || 3000;
@@ -31,7 +37,7 @@ app.set("view engine", "ejs");
 //Set up asset path
 app.use(express.static(assetsPath));
 //Passport
-app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
+app.use(session({ secret: process.env.secret, resave: false, saveUninitialized: false }));
 app.use(passport.session());
 //Allows object url encoding (forms)
 app.use(express.urlencoded({ extended: false }));
@@ -41,6 +47,13 @@ app.use(express.urlencoded({ extended: false }));
 //--------------------- Paths ---------------------
 app.get("/", (req, res) => {
   res.render("index", {});
+});
+
+app.use("/", indexRouter);
+app.use("/signin", signInRouter);
+app.use("/signup", signUpRouter);
+app.get("/*", (req, res) => {
+  res.render("404", {});
 });
 
 app.listen(PORT, () => {
