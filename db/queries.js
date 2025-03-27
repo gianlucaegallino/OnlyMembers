@@ -17,7 +17,7 @@ async function getUserbyName(username) {
 }
 
 
-async function getUserbyId(username) {
+async function getUserbyId(id) {
     let contents = pool.query(
       "SELECT * FROM users WHERE id = $1",
       [id]

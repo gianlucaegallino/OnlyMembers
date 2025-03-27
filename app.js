@@ -14,7 +14,7 @@ const express = require("express");
 const { body, validationResult } = require("express-validator");
 // Express session (for passport)
 const session = require("express-session");
-// Passport.js
+// Passport.js 
 const passport = require("passport");
 // Passport strategy
 const LocalStrategy = require("passport-local").Strategy;
@@ -87,10 +87,14 @@ passport.deserializeUser(async (id, done) => {
 
     done(null, user);
   } catch (err) {
-    done(err);
-  }
+    done(err); 
+  } 
 });
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
 //--------------------- Paths ---------------------
 app.get("/", (req, res) => {
   res.render("index", {});
