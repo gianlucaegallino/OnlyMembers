@@ -6,7 +6,7 @@ const assetsPath = path.join(__dirname, "public");
 // Dotenv
 require("dotenv").config();
 // PostgreSQL and queries
-const { Pool } = require("pg");
+const { Pool } = require("pg"); 
 const db = require("./db/queries");
 // Express
 const express = require("express");
