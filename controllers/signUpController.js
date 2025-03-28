@@ -62,13 +62,16 @@ let postForm = [
       const errors = validationResult(req);
       if (errors.isEmpty()) {
         await db.insertUser(name, surname, username, hashedPwd);
-        res.redirect("/");
+        res.render("index", { messages: ["User created correctly. Please, log in."] });
       } else {
-        res.render("signup", { errors: errors.errors });
+        let errorArray = errors.errors.map((error)=>{
+          return error.msg;
+        });
+        res.render("signup", { messages: errorArray });
       }
     } catch (error) {
       console.error(error);
-      res.render("signup", { errors: error });
+      res.render("signup", { messages: ["Something exploded somewhere.", error] });
     }
   },
 ];

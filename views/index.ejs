@@ -11,9 +11,25 @@
     <% if (locals.currentUser) {%>
     <h1>Welcome, <%= currentUser.name + " " + currentUser.surname %></h1>
     <a href="/signout">Sign Out</a>
-    <% } else { %>
-      <a href="/signup">Sign Up</a>
-      <a href="/signin">Sign In</a>
+
+    <% if (locals.currentUser.memberstatus == false){ %>
+    <h2>Enter the secret password to become a secret member...</h2>
+    <form action="/" method="POST">
+      <label for="secret">Confirm Password:</label>
+      <input type="text" id="secret" name="secret"placeholder="Secret Password"></input>
+      <button type="submit">Submit</button>
+    </form>
+
+    <% } else{ %>
+    <h2>posts should go here...</h2>
+    <% } } else { %>
+    <a href="/signup">Sign Up</a>
+    <a href="/signin">Sign In</a>
     <% } %>
+    <% if (typeof messages !== 'undefined'){
+      console.log(messages);for (let i=0; i<
+      messages.length;i++){ %>
+      <p><%=messages[i]%></p>
+      <% } } %>
   </body>
 </html>
